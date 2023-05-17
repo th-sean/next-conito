@@ -5,7 +5,7 @@ function Home({signOut, user}) {
   return (
   <>
     <h1>Hello {user.username}</h1>
-    <Button onClick={signOut}>sign Out </Button>
+    <button onClick={signOut}>sign Out </button>
   </>
   )
 }
