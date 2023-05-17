@@ -17,5 +17,7 @@ export async function getServerSideProps(context){
                 authenticated: true, username:user.username
             }
         }
+    } catch {
+        return
     }
 }
