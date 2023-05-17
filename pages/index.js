@@ -1,22 +1,13 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { withAuthenticator} from '@aws-amplify/ui-react'
+import React from 'react'
 
-export default function Home() {
-  const [session, loading] = useSession();
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
+function Home({signOut, user}) {
   return (
-    <>
-      Not signed in <br/>
-      <button onClick={()=> signIn()}>Sign in</button>
-    </>
+  <>
+    <h1>Hello {user.username}</h1>
+    <Button onClick={signOut}>sign Out </Button>
+  </>
   )
 }
+
+export default withAuthenticator(Home)

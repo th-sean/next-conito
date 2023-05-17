@@ -1,10 +1,14 @@
 import '../styles/globals.css'
-import { Provider } from 'next-auth/react'
+import {Amplify} from 'aws-amplify'
+import awsconfig from '../aws-exports.js'
+
+Amplify.configure({...awsconfig, ssr: true});
+
 
 function MyApp({ Component, pageProps }) {
-  return (<Provider session={pageProps.session}>
+  return (
       <Component {...pageProps} />
-  </Provider> )
+  )
 }
 
 export default MyApp
